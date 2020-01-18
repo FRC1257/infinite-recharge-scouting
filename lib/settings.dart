@@ -36,7 +36,7 @@ class SettingsState extends State<Settings> {
     readText('settingsLogs', 'oid.txt').then((String oid) {
       setState(() {
         if ((oid == '') || (oid == null)) {
-          oid = '1FAIpQLSd576eCt6nkJw0oHGq0vO4vg-MysOsgl_XLs2bbCAP8LmYB5Q';
+          oid = '1FAIpQLScjDcsuGJVFRpz9daUPAl8eGL_ZDN4YIbJtzSt06fEKQNfy-A';
           writeText('settingsLogs', 'oid.txt', oid, false);
         }
         objectiveID = oid;

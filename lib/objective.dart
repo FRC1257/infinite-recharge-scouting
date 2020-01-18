@@ -41,22 +41,20 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
   String team = '';
   String match = '';
   String initials = '';
-  String sandstormStart = '';
-  String sandstormPreload = '';
-  String sandstormHatch= '';
-  String sandstormCargo= '';
-  int hatchShip = 0;
-  int hatchLow = 0;
-  int hatchMedium = 0;
-  int hatchHigh = 0;
-  int hatchDropped = 0;
-  int cargoShip = 0;
-  int cargoLow = 0;
-  int cargoMedium = 0;
-  int cargoHigh = 0;
-  int cargoDropped = 0;
+  String autoCross = '';
+  String autoPreload = '';
+  String autoLow = '';
+  String autoOuter = '';
+  String autoInner = '';
+  String rotationControl = '';
+  String positionControl = '';
+  int cellLow = 0;
+  int cellOuter = 0;
+  int cellInner = 0;
+  int cellDroppedLow = 0;
+  int cellDroppedHigh = 0;
   String endgameClimb = '';
-  String endgameHelp = '';
+  String endgameLevel = '';
   String notes = '';
   // These Booleans (custom boolean class passed by reference) determine for each REQUIRED field
   // if they need to be filled in and are not. This determines whether the labels are red.
@@ -65,12 +63,15 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
   Boolean teamRed = Boolean(false);
   Boolean matchRed = Boolean(false);
   Boolean initialsRed = Boolean(false);
-  Boolean sandstormStartRed = Boolean(false);
-  Boolean sandstormPreloadRed = Boolean(false);
-  Boolean sandstormHatchRed = Boolean(false);
-  Boolean sandstormCargoRed = Boolean(false);
+  Boolean autoCrossRed = Boolean(false);
+  Boolean autoPreloadRed = Boolean(false);
+  Boolean autoLowRed = Boolean(false);
+  Boolean autoOuterRed = Boolean(false);
+  Boolean autoInnerRed = Boolean(false);
+  Boolean rotationControlRed = Boolean(false);
+  Boolean positionControlRed = Boolean(false);
   Boolean endgameClimbRed = Boolean(false);
-  Boolean endgameHelpRed = Boolean(false);
+  Boolean endgameLevelRed = Boolean(false);
   Boolean notesRed = Boolean(false);
   // These TextEditingControllers have to be declared to
   // set the state for text fields each time a change occurs.
@@ -78,8 +79,10 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
   TextEditingController teamController = TextEditingController();
   TextEditingController matchController = TextEditingController();
   TextEditingController initialsController = TextEditingController();
-  TextEditingController sandstormHatchController = TextEditingController();
-  TextEditingController sandstormCargoController = TextEditingController();
+  TextEditingController autoPreloadController = TextEditingController();
+  TextEditingController autoLowController = TextEditingController();
+  TextEditingController autoOuterController = TextEditingController();
+  TextEditingController autoInnerController = TextEditingController();
   TextEditingController notesController = TextEditingController();
   // These variables (robot to scout and objective ID) are determined by the
   // settings logs and must be set in the asynchronous methods below to read said logs.
@@ -95,39 +98,42 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
       team = '';
       match = '';
       initials = '';
-      sandstormStart = '';
-      sandstormPreload = '';
-      sandstormHatch = '';
-      sandstormCargo = '';
-      hatchShip = 0;
-      hatchLow = 0;
-      hatchMedium = 0;
-      hatchHigh = 0;
-      hatchDropped = 0;
-      cargoShip = 0;
-      cargoLow = 0;
-      cargoMedium = 0;
-      cargoHigh = 0;
-      cargoDropped = 0;
+      autoCross = '';
+      autoPreload = '';
+      autoLow = '';
+      autoOuter = '';
+      autoInner = '';
+      rotationControl = '';
+      positionControl = '';
+      cellLow = 0;
+      cellOuter = 0;
+      cellInner = 0;
+      cellDroppedLow = 0;
+      cellDroppedHigh = 0;
       endgameClimb = '';
-      endgameHelp = '';
+      endgameLevel = '';
       notes = '';
       teamController.clear();
       matchController.clear();
       initialsController.clear();
-      sandstormHatchController.clear();
-      sandstormCargoController.clear();
+      autoPreloadController.clear();
+      autoLowController.clear();
+      autoOuterController.clear();
+      autoInnerController.clear();
       notesController.clear();
       eventRed.makeFalse();
       teamRed.makeFalse();
       matchRed.makeFalse();
       initialsRed.makeFalse();
-      sandstormStartRed.makeFalse();
-      sandstormPreloadRed.makeFalse();
-      sandstormHatchRed.makeFalse();
-      sandstormCargoRed.makeFalse();
+      autoCrossRed.makeFalse();
+      autoPreloadRed.makeFalse();
+      autoLowRed.makeFalse();
+      autoOuterRed.makeFalse();
+      autoInnerRed.makeFalse();
+      rotationControlRed.makeFalse();
+      positionControlRed.makeFalse();
       endgameClimbRed.makeFalse();
-      endgameHelpRed.makeFalse();
+      endgameLevelRed.makeFalse();
       notesRed.makeFalse();
     });
   }
@@ -194,8 +200,8 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                 // the labels of unfilled fields (checked by whether the data point is empty).
                 // Implement it with the required data points and Booleans you declared above.
                 setState(() {
-                  List<String> criteria = [event, team, match, initials, sandstormStart, sandstormPreload, sandstormHatch, sandstormCargo, endgameClimb, endgameHelp, notes];
-                  List<Boolean> bools = [eventRed, teamRed, matchRed, initialsRed, sandstormStartRed, sandstormPreloadRed, sandstormHatchRed, sandstormCargoRed, endgameClimbRed, endgameHelpRed, notesRed];
+                  List<String> criteria = [event, team, match, initials, autoCross, autoPreload, autoLow, autoOuter, autoInner, rotationControl, positionControl, endgameClimb, endgameLevel, notes];
+                  List<Boolean> bools = [eventRed, teamRed, matchRed, initialsRed, autoCrossRed, autoPreloadRed, autoLowRed, autoOuterRed, autoInnerRed, rotationControlRed, positionControlRed, endgameClimbRed, endgameLevelRed, notesRed];
                   for (int i = 0; i < criteria.length; i++) {
                     if (criteria[i] == '') {
                       flag = false;
@@ -221,7 +227,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                   // Change the construction of the complete string based on your data points, but
                   // leave everything else unchanged.
                   int millis = DateTime.now().millisecondsSinceEpoch;
-                  String complete = '$event|$team|$match|$initials|$sandstormStart|$sandstormPreload|$sandstormHatch|$sandstormCargo|$cargoHigh|$cargoMedium|$cargoLow|$cargoShip|$cargoDropped|$hatchHigh|$hatchMedium|$hatchLow|$hatchShip|$hatchDropped|$endgameClimb|$endgameHelp|$notes|$millis|}';
+                  String complete = '$event|$team|$match|$initials|$autoCross|$autoPreload|$autoLow|$autoOuter|$autoInner|$rotationControl|$positionControl|$cellLow|$cellOuter|$cellInner|$cellDroppedLow|$cellDroppedHigh|$endgameClimb|$endgameLevel|$notes|$millis|}';
                   int status = await makeRequest(ID, complete);
                   if (status == 200) {
                     Flushbar(
@@ -415,10 +421,11 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                           Padding(padding: EdgeInsets.only(bottom: 8.0), child: Center(child: Text('Sandstorm', style: TextStyle(fontSize: 18)))),
                           Row(
                               children: <Widget>[
-                                Flexible(child: Center(child: Text('Start', style: TextStyle(color: sandstormStartRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 3, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('Preload', style: TextStyle(color: sandstormPreloadRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 3, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('Hatch', style: TextStyle(color: sandstormHatchRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 2, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('Cargo', style: TextStyle(color: sandstormCargoRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 2, fit: FlexFit.tight)
+                                Flexible(child: Center(child: Text('Cross', style: TextStyle(color: autoCrossRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 1, fit: FlexFit.tight),
+                                Flexible(child: Center(child: Text('Preload', style: TextStyle(color: autoPreloadRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 1, fit: FlexFit.tight),
+                                Flexible(child: Center(child: Text('Low', style: TextStyle(color: autoLowRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 1, fit: FlexFit.tight),
+                                Flexible(child: Center(child: Text('Outer', style: TextStyle(color: autoOuterRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 1, fit: FlexFit.tight),
+                                Flexible(child: Center(child: Text('Inner', style: TextStyle(color: autoInnerRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 1, fit: FlexFit.tight)
                               ]
                           ),
                           Padding(
@@ -430,13 +437,13 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                         padding: EdgeInsets.symmetric(horizontal: 8.0),
                                         child: DropdownButtonHideUnderline(
                                             child: DropdownButton<String>(
-                                              value: sandstormStart,
+                                              value: autoCross,
                                               onChanged: (String newValue) {
                                                 setState(() {
-                                                  sandstormStart = newValue;
+                                                  autoCross = newValue;
                                                 });
                                               },
-                                              items: <String>['', 'None', 'L1', 'L2'].map<DropdownMenuItem<String>>((String value) {
+                                              items: <String>['', 'Yes', 'No'].map<DropdownMenuItem<String>>((String value) {
                                                 return DropdownMenuItem<String>(
                                                   value: value,
                                                   child: Text(value),
@@ -445,30 +452,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                             )
                                         ),
                                       ),
-                                      flex: 3,
-                                      fit: FlexFit.tight
-                                  ),
-                                  Flexible(
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                        child: DropdownButtonHideUnderline(
-                                            child: DropdownButton<String>(
-                                              value: sandstormPreload,
-                                              onChanged: (String newValue) {
-                                                setState(() {
-                                                  sandstormPreload = newValue;
-                                                });
-                                              },
-                                              items: <String>['', 'None', 'Hatch', 'Cargo'].map<DropdownMenuItem<String>>((String value) {
-                                                return DropdownMenuItem<String>(
-                                                  value: value,
-                                                  child: Text(value),
-                                                );
-                                              }).toList(),
-                                            )
-                                        ),
-                                      ),
-                                      flex: 3,
+                                      flex: 1,
                                       fit: FlexFit.tight
                                   ),
                                   Flexible(
@@ -476,14 +460,56 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                         padding: EdgeInsets.symmetric(horizontal: 8.0),
                                         child: TextField(
                                             textAlign: TextAlign.center,
-                                            controller: sandstormHatchController,
+                                            controller: autoPreloadController,
                                             decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 hintText: '...'
                                             ),
                                             onChanged: (String newValue) {
                                               setState(() {
-                                                sandstormHatch = newValue;
+                                                autoPreload = newValue;
+                                              });
+                                            },
+                                            keyboardType: TextInputType.number
+                                        ),
+                                      ),
+                                      flex: 1,
+                                      fit: FlexFit.tight
+                                  ),
+                                  Flexible(
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                                        child: TextField(
+                                            textAlign: TextAlign.center,
+                                            controller: autoLowController,
+                                            decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                hintText: '...'
+                                            ),
+                                            onChanged: (String newValue) {
+                                              setState(() {
+                                                autoLow = newValue;
+                                              });
+                                            },
+                                            keyboardType: TextInputType.number
+                                        ),
+                                      ),
+                                      flex: 1,
+                                      fit: FlexFit.tight
+                                  ),
+                                  Flexible(
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                                        child: TextField(
+                                            textAlign: TextAlign.center,
+                                            controller: autoOuterController,
+                                            decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                hintText: '...'
+                                            ),
+                                            onChanged: (String newValue) {
+                                              setState(() {
+                                                autoOuter = newValue;
                                               });
                                             },
                                             keyboardType: TextInputType.number
@@ -497,14 +523,14 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                         padding: EdgeInsets.symmetric(horizontal: 8.0),
                                         child: TextField(
                                             textAlign: TextAlign.center,
-                                            controller: sandstormCargoController,
+                                            controller: autoInnerController,
                                             decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 hintText: '...'
                                             ),
                                             onChanged: (String newValue) {
                                               setState(() {
-                                                sandstormCargo = newValue;
+                                                autoInner = newValue;
                                               });
                                             },
                                             keyboardType: TextInputType.number
@@ -516,25 +542,85 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                 ]
                             ),
                           ),
-                          Padding(padding: EdgeInsets.only(bottom: 8.0), child: Center(child: Text('Hatch', style: TextStyle(fontSize: 18)))),
+                          Padding(padding: EdgeInsets.only(bottom: 8.0), child: Center(child: Text('Control Panel', style: TextStyle(fontSize: 18)))),
                           Row(
                               children: <Widget>[
-                                Flexible(child: Center(child: Text('Cargo')), flex: 1, fit: FlexFit.tight),
+                                Flexible(child: Center(child: Text('Rotation Control', style: TextStyle(color: autoCrossRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 1, fit: FlexFit.tight),
+                                Flexible(child: Center(child: Text('Position Control', style: TextStyle(color: autoPreloadRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 1, fit: FlexFit.tight),
+                              ]
+                          ),
+                          Padding(
+                              padding: EdgeInsets.only(bottom: 8.0),
+                              child: Row(
+                                  children: <Widget>[
+                                    Flexible(
+                                        child: Padding(
+                                          padding: EdgeInsets.symmetric(horizontal: 8.0),
+                                          child: DropdownButtonHideUnderline(
+                                              child: DropdownButton<String>(
+                                                value: rotationControl,
+                                                onChanged: (String newValue) {
+                                                  setState(() {
+                                                    rotationControl = newValue;
+                                                  });
+                                                },
+                                                items: <String>['', 'Yes', 'Tried', 'No'].map<DropdownMenuItem<String>>((String value) {
+                                                  return DropdownMenuItem<String>(
+                                                    value: value,
+                                                    child: Text(value),
+                                                  );
+                                                }).toList(),
+                                              )
+                                          ),
+                                        ),
+                                        flex: 1,
+                                        fit: FlexFit.tight
+                                    ),
+                                    Flexible(
+                                        child: Padding(
+                                          padding: EdgeInsets.symmetric(horizontal: 8.0),
+                                          child: DropdownButtonHideUnderline(
+                                              child: DropdownButton<String>(
+                                                value: positionControl,
+                                                onChanged: (String newValue) {
+                                                  setState(() {
+                                                    positionControl = newValue;
+                                                  });
+                                                },
+                                                items: <String>['', 'Yes', 'Tried', 'No'].map<DropdownMenuItem<String>>((String value) {
+                                                  return DropdownMenuItem<String>(
+                                                    value: value,
+                                                    child: Text(value),
+                                                  );
+                                                }).toList(),
+                                              )
+                                          ),
+                                        ),
+                                        flex: 1,
+                                        fit: FlexFit.tight
+                                    ),
+                                  ]
+                              )
+                          ),
+                          Padding(padding: EdgeInsets.only(bottom: 8.0), child: Center(child: Text('Power Cells', style: TextStyle(fontSize: 18)))),
+                          Row(
+                              children: <Widget>[
                                 Flexible(child: Center(child: Text('Low')), flex: 1, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('Medium')), flex: 1, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('High')), flex: 1, fit: FlexFit.tight),
+                                Flexible(child: Center(child: Text('Outer')), flex: 1, fit: FlexFit.tight),
+                                Flexible(child: Center(child: Text('Inner')), flex: 1, fit: FlexFit.tight),
+                                Flexible(child: Center(child: Text('Low')), flex: 1, fit: FlexFit.tight),
+                                Flexible(child: Center(child: Text('High')), flex: 1, fit: FlexFit.tight)
+                              ]
+                          ),
+                          Row(
+                              children: <Widget>[
+                                Flexible(child: Center(child: Text('Goal')), flex: 1, fit: FlexFit.tight),
+                                Flexible(child: Center(child: Text('Goal')), flex: 1, fit: FlexFit.tight),
+                                Flexible(child: Center(child: Text('Goal')), flex: 1, fit: FlexFit.tight),
+                                Flexible(child: Center(child: Text('Dropped')), flex: 1, fit: FlexFit.tight),
                                 Flexible(child: Center(child: Text('Dropped')), flex: 1, fit: FlexFit.tight)
                               ]
                           ),
-                          Row(
-                              children: <Widget>[
-                                Flexible(child: Center(child: Text('Ship')), flex: 1, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('Rocket')), flex: 1, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('Rocket')), flex: 1, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('Rocket')), flex: 1, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('on Field')), flex: 1, fit: FlexFit.tight)
-                              ]
-                          ),
                           Padding(
                               padding: EdgeInsets.only(bottom: 8.0),
                               child: Row(
@@ -543,7 +629,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                         child: FlatButton(
                                             onPressed: () {
                                               setState(() {
-                                                hatchShip++;
+                                                cellLow++;
                                               });
                                             },
                                             padding: EdgeInsets.all(0.0),
@@ -556,7 +642,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                         child: FlatButton(
                                             onPressed: () {
                                               setState(() {
-                                                hatchLow++;
+                                                cellOuter++;
                                               });
                                             },
                                             padding: EdgeInsets.all(0.0),
@@ -569,7 +655,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                         child: FlatButton(
                                             onPressed: () {
                                               setState(() {
-                                                hatchMedium++;
+                                                cellInner++;
                                               });
                                             },
                                             padding: EdgeInsets.all(0.0),
@@ -582,7 +668,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                         child: FlatButton(
                                             onPressed: () {
                                               setState(() {
-                                                hatchHigh++;
+                                                cellDroppedLow++;
                                               });
                                             },
                                             padding: EdgeInsets.all(0.0),
@@ -595,7 +681,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                         child: FlatButton(
                                             onPressed: () {
                                               setState(() {
-                                                hatchDropped++;
+                                                cellDroppedHigh++;
                                               });
                                             },
                                             padding: EdgeInsets.all(0.0),
@@ -612,222 +698,27 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                               child: Row(
                                   children: <Widget>[
                                     Flexible(
-                                        child: Center(child: Text('$hatchShip')),
+                                        child: Center(child: Text('$cellLow')),
                                         flex: 1,
                                         fit: FlexFit.tight
                                     ),
                                     Flexible(
-                                        child: Center(child: Text('$hatchLow')),
+                                        child: Center(child: Text('$cellOuter')),
                                         flex: 1,
                                         fit: FlexFit.tight
                                     ),
                                     Flexible(
-                                        child: Center(child: Text('$hatchMedium')),
+                                        child: Center(child: Text('$cellInner')),
                                         flex: 1,
                                         fit: FlexFit.tight
                                     ),
                                     Flexible(
-                                        child: Center(child: Text('$hatchHigh')),
+                                        child: Center(child: Text('$cellDroppedLow')),
                                         flex: 1,
                                         fit: FlexFit.tight
                                     ),
                                     Flexible(
-                                        child: Center(child: Text('$hatchDropped')),
-                                        flex: 1,
-                                        fit: FlexFit.tight
-                                    ),
-                                  ]
-                              )
-                          ),
-                          Padding(
-                              padding: EdgeInsets.only(bottom: 8.0),
-                              child: Row(
-                                  children: <Widget>[
-                                    Flexible(
-                                        child: FlatButton(
-                                            onPressed: () {
-                                              setState(() {
-                                                hatchShip = max(0, hatchShip - 1);
-                                              });
-                                            },
-                                            padding: EdgeInsets.all(0.0),
-                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFF600), size: 60.0), child: Icon(Icons.expand_more))
-                                        ),
-                                        flex: 1,
-                                        fit: FlexFit.tight
-                                    ),
-                                    Flexible(
-                                        child: FlatButton(
-                                            onPressed: () {
-                                              setState(() {
-                                                hatchLow= max(0, hatchLow- 1);
-                                              });
-                                            },
-                                            padding: EdgeInsets.all(0.0),
-                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFF600), size: 60.0), child: Icon(Icons.expand_more))
-                                        ),
-                                        flex: 1,
-                                        fit: FlexFit.tight
-                                    ),
-                                    Flexible(
-                                        child: FlatButton(
-                                            onPressed: () {
-                                              setState(() {
-                                                hatchMedium= max(0, hatchMedium- 1);
-                                              });
-                                            },
-                                            padding: EdgeInsets.all(0.0),
-                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFF600), size: 60.0), child: Icon(Icons.expand_more))
-                                        ),
-                                        flex: 1,
-                                        fit: FlexFit.tight
-                                    ),
-                                    Flexible(
-                                        child: FlatButton(
-                                            onPressed: () {
-                                              setState(() {
-                                                hatchHigh= max(0, hatchHigh- 1);
-                                              });
-                                            },
-                                            padding: EdgeInsets.all(0.0),
-                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFF600), size: 60.0), child: Icon(Icons.expand_more))
-                                        ),
-                                        flex: 1,
-                                        fit: FlexFit.tight
-                                    ),
-                                    Flexible(
-                                        child: FlatButton(
-                                            onPressed: () {
-                                              setState(() {
-                                                hatchDropped = max(0, hatchDropped- 1);
-                                              });
-                                            },
-                                            padding: EdgeInsets.all(0.0),
-                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFF600), size: 60.0), child: Icon(Icons.expand_more))
-                                        ),
-                                        flex: 1,
-                                        fit: FlexFit.tight
-                                    ),
-                                  ]
-                              )
-                          ),
-                          Padding(padding: EdgeInsets.only(bottom: 8.0), child: Center(child: Text('Cargo', style: TextStyle(fontSize: 18)))),
-                          Row(
-                              children: <Widget>[
-                                Flexible(child: Center(child: Text('Cargo')), flex: 1, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('Low')), flex: 1, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('Medium')), flex: 1, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('High')), flex: 1, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('Dropped')), flex: 1, fit: FlexFit.tight)
-                              ]
-                          ),
-                          Row(
-                              children: <Widget>[
-                                Flexible(child: Center(child: Text('Ship')), flex: 1, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('Rocket')), flex: 1, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('Rocket')), flex: 1, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('Rocket')), flex: 1, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('on Field')), flex: 1, fit: FlexFit.tight)
-                              ]
-                          ),
-                          Padding(
-                              padding: EdgeInsets.only(bottom: 8.0),
-                              child: Row(
-                                  children: <Widget>[
-                                    Flexible(
-                                        child: FlatButton(
-                                            onPressed: () {
-                                              setState(() {
-                                                cargoShip++;
-                                              });
-                                            },
-                                            padding: EdgeInsets.all(0.0),
-                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFAA55), size: 60.0), child: Icon(Icons.expand_less))
-                                        ),
-                                        flex: 1,
-                                        fit: FlexFit.tight
-                                    ),
-                                    Flexible(
-                                        child: FlatButton(
-                                            onPressed: () {
-                                              setState(() {
-                                                cargoLow++;
-                                              });
-                                            },
-                                            padding: EdgeInsets.all(0.0),
-                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFAA55), size: 60.0), child: Icon(Icons.expand_less))
-                                        ),
-                                        flex: 1,
-                                        fit: FlexFit.tight
-                                    ),
-                                    Flexible(
-                                        child: FlatButton(
-                                            onPressed: () {
-                                              setState(() {
-                                                cargoMedium++;
-                                              });
-                                            },
-                                            padding: EdgeInsets.all(0.0),
-                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFAA55), size: 60.0), child: Icon(Icons.expand_less))
-                                        ),
-                                        flex: 1,
-                                        fit: FlexFit.tight
-                                    ),
-                                    Flexible(
-                                        child: FlatButton(
-                                            onPressed: () {
-                                              setState(() {
-                                                cargoHigh++;
-                                              });
-                                            },
-                                            padding: EdgeInsets.all(0.0),
-                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFAA55), size: 60.0), child: Icon(Icons.expand_less))
-                                        ),
-                                        flex: 1,
-                                        fit: FlexFit.tight
-                                    ),
-                                    Flexible(
-                                        child: FlatButton(
-                                            onPressed: () {
-                                              setState(() {
-                                                cargoDropped++;
-                                              });
-                                            },
-                                            padding: EdgeInsets.all(0.0),
-                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFAA55), size: 60.0), child: Icon(Icons.expand_less))
-                                        ),
-                                        flex: 1,
-                                        fit: FlexFit.tight
-                                    ),
-                                  ]
-                              )
-                          ),
-                          Padding(
-                              padding: EdgeInsets.only(bottom: 8.0),
-                              child: Row(
-                                  children: <Widget>[
-                                    Flexible(
-                                        child: Center(child: Text('$cargoShip')),
-                                        flex: 1,
-                                        fit: FlexFit.tight
-                                    ),
-                                    Flexible(
-                                        child: Center(child: Text('$cargoLow')),
-                                        flex: 1,
-                                        fit: FlexFit.tight
-                                    ),
-                                    Flexible(
-                                        child: Center(child: Text('$cargoMedium')),
-                                        flex: 1,
-                                        fit: FlexFit.tight
-                                    ),
-                                    Flexible(
-                                        child: Center(child: Text('$cargoHigh')),
-                                        flex: 1,
-                                        fit: FlexFit.tight
-                                    ),
-                                    Flexible(
-                                        child: Center(child: Text('$cargoDropped')),
+                                        child: Center(child: Text('$cellDroppedHigh')),
                                         flex: 1,
                                         fit: FlexFit.tight
                                     ),
@@ -842,11 +733,11 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                         child: FlatButton(
                                             onPressed: () {
                                               setState(() {
-                                                cargoShip = max(0, cargoShip - 1);
+                                                cellLow = max(0, cellLow - 1);
                                               });
                                             },
                                             padding: EdgeInsets.all(0.0),
-                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFAA55), size: 60.0), child: Icon(Icons.expand_more))
+                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFF600), size: 60.0), child: Icon(Icons.expand_more))
                                         ),
                                         flex: 1,
                                         fit: FlexFit.tight
@@ -855,11 +746,11 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                         child: FlatButton(
                                             onPressed: () {
                                               setState(() {
-                                                cargoLow= max(0, cargoLow- 1);
+                                                cellOuter = max(0, cellOuter - 1);
                                               });
                                             },
                                             padding: EdgeInsets.all(0.0),
-                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFAA55), size: 60.0), child: Icon(Icons.expand_more))
+                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFF600), size: 60.0), child: Icon(Icons.expand_more))
                                         ),
                                         flex: 1,
                                         fit: FlexFit.tight
@@ -868,11 +759,11 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                         child: FlatButton(
                                             onPressed: () {
                                               setState(() {
-                                                cargoMedium= max(0, cargoMedium- 1);
+                                                cellInner = max(0, cellInner- 1);
                                               });
                                             },
                                             padding: EdgeInsets.all(0.0),
-                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFAA55), size: 60.0), child: Icon(Icons.expand_more))
+                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFF600), size: 60.0), child: Icon(Icons.expand_more))
                                         ),
                                         flex: 1,
                                         fit: FlexFit.tight
@@ -881,11 +772,11 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                         child: FlatButton(
                                             onPressed: () {
                                               setState(() {
-                                                cargoHigh= max(0, cargoHigh- 1);
+                                                cellDroppedLow = max(0, cellDroppedLow - 1);
                                               });
                                             },
                                             padding: EdgeInsets.all(0.0),
-                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFAA55), size: 60.0), child: Icon(Icons.expand_more))
+                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFF600), size: 60.0), child: Icon(Icons.expand_more))
                                         ),
                                         flex: 1,
                                         fit: FlexFit.tight
@@ -894,11 +785,11 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                         child: FlatButton(
                                             onPressed: () {
                                               setState(() {
-                                                cargoDropped = max(0, cargoDropped- 1);
+                                                cellDroppedHigh = max(0, cellDroppedHigh - 1);
                                               });
                                             },
                                             padding: EdgeInsets.all(0.0),
-                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFAA55), size: 60.0), child: Icon(Icons.expand_more))
+                                            child: IconTheme(data: IconThemeData(color: Color(0xFFFFF600), size: 60.0), child: Icon(Icons.expand_more))
                                         ),
                                         flex: 1,
                                         fit: FlexFit.tight
@@ -910,7 +801,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                           Row(
                               children: <Widget>[
                                 Flexible(child: Center(child: Text('Climb', style: TextStyle(color: endgameClimbRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 1, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('Help', style: TextStyle(color: endgameHelpRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 1, fit: FlexFit.tight)
+                                Flexible(child: Center(child: Text('Help', style: TextStyle(color: endgameLevelRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 1, fit: FlexFit.tight)
                               ]
                           ),
                           Padding(
@@ -928,7 +819,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                                     endgameClimb = newValue;
                                                   });
                                                 },
-                                                items: <String>['', 'None', 'L1', 'L2', 'L3'].map<DropdownMenuItem<String>>((String value) {
+                                                items: <String>['', 'None', 'Parked', 'Tried to Climb', 'Climbed'].map<DropdownMenuItem<String>>((String value) {
                                                   return DropdownMenuItem<String>(
                                                     value: value,
                                                     child: Text(value),
@@ -945,13 +836,13 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                           padding: EdgeInsets.symmetric(horizontal: 8.0),
                                           child: DropdownButtonHideUnderline(
                                               child: DropdownButton<String>(
-                                                value: endgameHelp,
+                                                value: endgameLevel,
                                                 onChanged: (String newValue) {
                                                   setState(() {
-                                                    endgameHelp = newValue;
+                                                    endgameLevel = newValue;
                                                   });
                                                 },
-                                                items: <String>['', 'None', 'Received', 'L2', 'L3', 'L2/L2', 'L2/L3', 'L3/L3'].map<DropdownMenuItem<String>>((String value) {
+                                                items: <String>['', 'None', 'Tried Alone', 'Tried Together', 'Leveled Alone', 'Leveled Together'].map<DropdownMenuItem<String>>((String value) {
                                                   return DropdownMenuItem<String>(
                                                     value: value,
                                                     child: Text(value),
