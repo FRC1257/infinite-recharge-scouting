@@ -44,7 +44,7 @@ class ScoutAppState extends State<ScoutApp> {
               backgroundColor: Colors.transparent,
               appBar: AppBar(
                   backgroundColor: Colors.transparent,
-                title: Text('Team 1257 Scouting App: 2019')
+                title: Text('Team 1257 Scouting App: 2020')
               ),
               body: Home()
             )

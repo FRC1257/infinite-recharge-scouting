@@ -418,7 +418,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                   ]
                               )
                           ),
-                          Padding(padding: EdgeInsets.only(bottom: 8.0), child: Center(child: Text('Sandstorm', style: TextStyle(fontSize: 18)))),
+                          Padding(padding: EdgeInsets.only(bottom: 8.0), child: Center(child: Text('Autonomous', style: TextStyle(fontSize: 18)))),
                           Row(
                               children: <Widget>[
                                 Flexible(child: Center(child: Text('Cross', style: TextStyle(color: autoCrossRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 1, fit: FlexFit.tight),
@@ -515,7 +515,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                             keyboardType: TextInputType.number
                                         ),
                                       ),
-                                      flex: 2,
+                                      flex: 1,
                                       fit: FlexFit.tight
                                   ),
                                   Flexible(
@@ -536,7 +536,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                             keyboardType: TextInputType.number
                                         ),
                                       ),
-                                      flex: 2,
+                                      flex: 1,
                                       fit: FlexFit.tight
                                   ),
                                 ]
@@ -545,8 +545,8 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                           Padding(padding: EdgeInsets.only(bottom: 8.0), child: Center(child: Text('Control Panel', style: TextStyle(fontSize: 18)))),
                           Row(
                               children: <Widget>[
-                                Flexible(child: Center(child: Text('Rotation Control', style: TextStyle(color: autoCrossRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 1, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('Position Control', style: TextStyle(color: autoPreloadRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 1, fit: FlexFit.tight),
+                                Flexible(child: Center(child: Text('Rotation Control', style: TextStyle(color: rotationControlRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 1, fit: FlexFit.tight),
+                                Flexible(child: Center(child: Text('Position Control', style: TextStyle(color: positionControlRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 1, fit: FlexFit.tight),
                               ]
                           ),
                           Padding(
