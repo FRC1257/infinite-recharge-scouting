@@ -247,7 +247,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                   }
                   writeText('objectiveLogs', 'objectiveLog.txt', complete, true);
 
-                  // reset();
+                  reset();
                   // This is the response for if the data is not complete.
                   // Leave it unchanged.
                 } else {
