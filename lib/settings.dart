@@ -36,7 +36,7 @@ class SettingsState extends State<Settings> {
     readText('settingsLogs', 'oid.txt').then((String oid) {
       setState(() {
         if ((oid == '') || (oid == null)) {
-          oid = '1FAIpQLScjDcsuGJVFRpz9daUPAl8eGL_ZDN4YIbJtzSt06fEKQNfy-A';
+        oid = '1FAIpQLSef3TlAoDYC5m-XAQz7uMK8Ydz8lyCGAFpooaXKMeBF3SW-ng/formResponse?usp=pp_url&entry.1599575339';
           writeText('settingsLogs', 'oid.txt', oid, false);
         }
         objectiveID = oid;
@@ -46,7 +46,7 @@ class SettingsState extends State<Settings> {
     readText('settingsLogs', 'pid.txt').then((String pid) {
       setState(() {
         if ((pid == '') || (pid == null)) {
-          pid = '1Ak6eePtfBNeRiirdBNp8R7jAu2uxjrTve2DBVRKbbaQ';
+          pid = '1FAIpQLScwlPN0XZVUgJ2vJkyiJbG-5aunUgqkIvfoiMRKgNIKTt7hsg/formResponse?usp=pp_url&entry.857213824';
           writeText('settingsLogs', 'pid.txt', pid, false);
         }
         pitID = pid;

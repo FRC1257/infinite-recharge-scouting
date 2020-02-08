@@ -57,7 +57,7 @@ Future<String> readText(String directory, String filename) async {
 
 Future<int> makeRequest(String formID, String text) async {
   try {
-    String url = Uri.encodeFull('https://docs.google.com/forms/d/e/$formID/formResponse?entry.615575561=$text&submit=Submit');
+    String url = Uri.encodeFull('https://docs.google.com/forms/d/e/$formID=$text&submit=Submit');
     http.Response res = await http.get(url);
     return res.statusCode;
   } on SocketException {
