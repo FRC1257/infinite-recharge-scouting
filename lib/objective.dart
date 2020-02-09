@@ -801,7 +801,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                           Row(
                               children: <Widget>[
                                 Flexible(child: Center(child: Text('Climb', style: TextStyle(color: endgameClimbRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 1, fit: FlexFit.tight),
-                                Flexible(child: Center(child: Text('Help', style: TextStyle(color: endgameLevelRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 1, fit: FlexFit.tight)
+                                Flexible(child: Center(child: Text('Level', style: TextStyle(color: endgameLevelRed.getBool() ? Color(0xFF902020) : Color(0xFFFFFFFF)))), flex: 1, fit: FlexFit.tight)
                               ]
                           ),
                           Padding(

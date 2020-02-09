@@ -424,7 +424,6 @@ class PitState extends State<Pit> {
                                             drivetrainType = newValue;
                                           });
                                         },
-                                        keyboardType: TextInputType.number
                                     ),
                                   ),
                                   flex: 1,
@@ -501,7 +500,6 @@ class PitState extends State<Pit> {
                                             speed = newValue;
                                           });
                                         },
-                                        keyboardType: TextInputType.number
                                     ),
                                   ),
                                   flex: 1,
@@ -598,7 +596,6 @@ class PitState extends State<Pit> {
                                             capacity = newValue;
                                           });
                                         },
-                                        keyboardType: TextInputType.number
                                     ),
                                   ),
                                   flex: 1,
@@ -654,7 +651,6 @@ class PitState extends State<Pit> {
                                             cellMech = newValue;
                                           });
                                         },
-                                        keyboardType: TextInputType.number
                                     ),
                                   ),
                                   flex: 1,
@@ -729,7 +725,6 @@ class PitState extends State<Pit> {
                                             cellReliability = newValue;
                                           });
                                         },
-                                        keyboardType: TextInputType.number
                                     ),
                                   ),
                                   flex: 1,
@@ -804,7 +799,6 @@ class PitState extends State<Pit> {
                                             cellTime = newValue;
                                           });
                                         },
-                                        keyboardType: TextInputType.number
                                     ),
                                   ),
                                   flex: 1,
