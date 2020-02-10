@@ -1,4 +1,4 @@
-package org.team1257.deep_space_scouting
+package org.team1257.infinite_recharge_scouting
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

@@ -1,4 +1,4 @@
-package org.team1257.deep_space_scouting;
+package org.team1257.infinite_recharge_scouting;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -63,7 +63,7 @@ public class MainActivity extends FlutterActivity {
         public AcceptThread() {
             BluetoothServerSocket tmp = null;
             try {
-                tmp = ba.listenUsingInsecureRfcommWithServiceRecord("deep_space_scouting", uuid);
+                tmp = ba.listenUsingInsecureRfcommWithServiceRecord("infinite_recharge_scouting", uuid);
             } catch (IOException e) {
                 e.printStackTrace();
             }
