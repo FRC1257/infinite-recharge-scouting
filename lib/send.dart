@@ -14,7 +14,7 @@ class Send extends StatefulWidget {
 }
 
 class SendState extends State<Send> {
-  static const platform = const MethodChannel('org.team1257.deepspacescouting/send');
+  static const platform = const MethodChannel('org.team1257.infiniterechargescouting/send');
   GlobalKey scaffold = GlobalKey();
   String dataType = 'Objective';
   String logType = 'Error';

@@ -37,8 +37,8 @@ public class MainActivity extends FlutterActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         GeneratedPluginRegistrant.registerWith(this);
-        channel = new MethodChannel(getFlutterView(), "org.team1257.deepspacescouting/send");
-        new MethodChannel(getFlutterView(), "org.team1257.deepspacescouting/send").setMethodCallHandler(
+        channel = new MethodChannel(getFlutterView(), "org.team1257.infiniterechargescouting/send");
+        new MethodChannel(getFlutterView(), "org.team1257.infiniterechargescouting/send").setMethodCallHandler(
                 new MethodCallHandler() {
                     @Override
                     public void onMethodCall(MethodCall call, Result result) {

@@ -22,7 +22,7 @@ class ScoutAppState extends State<ScoutApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Team 1257 Scouting App: 2019', // year-specific
+      title: 'Team 1257 Scouting App: 2020', // year-specific
       theme: ThemeData(
           brightness: Brightness.dark,
           primaryColor: Color(0xFF51284F),
