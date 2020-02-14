@@ -313,7 +313,9 @@ class PitState extends State<Pit> {
                               Flexible(
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                    child: DropdownButtonHideUnderline(
+                                    child: Listener(
+                                            onPointerDown: (_) => FocusScope.of(context).unfocus(),
+                                            child: DropdownButtonHideUnderline(
                                         child: DropdownButton<String>(
                                           value: event,
                                           onChanged: (String newValue) {
@@ -328,7 +330,7 @@ class PitState extends State<Pit> {
                                             );
                                           }).toList(),
                                         )
-                                    ),
+                                    ),)
                                   ),
                                   flex: 3,
                                   fit: FlexFit.tight
@@ -548,7 +550,9 @@ class PitState extends State<Pit> {
                               Flexible(
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                    child: DropdownButtonHideUnderline(
+                                    child: Listener(
+                                            onPointerDown: (_) => FocusScope.of(context).unfocus(),
+                                            child: DropdownButtonHideUnderline(
                                         child: DropdownButton<String>(
                                           value: vision,
                                           onChanged: (String newValue) {
@@ -563,7 +567,7 @@ class PitState extends State<Pit> {
                                             );
                                           }).toList(),
                                         )
-                                    ),
+                                    ),)
                                   ),
                                   flex: 1,
                                   fit: FlexFit.tight

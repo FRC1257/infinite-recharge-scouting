@@ -80,7 +80,9 @@ class SettingsState extends State<Settings> {
                             Flexible(
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                  child: DropdownButtonHideUnderline(
+                                  child: Listener(
+                                            onPointerDown: (_) => FocusScope.of(context).unfocus(),
+                                            child: DropdownButtonHideUnderline(
                                       child: DropdownButton<String>(
                                         value: robot,
                                         onChanged: (String newValue) {
@@ -96,7 +98,7 @@ class SettingsState extends State<Settings> {
                                           );
                                         }).toList(),
                                       )
-                                  ),
+                                  ),)
                                 ),
                                 flex: 3,
                                 fit: FlexFit.tight
