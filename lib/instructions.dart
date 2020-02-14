@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_for_web/material.dart';
 
 class Instructions extends StatefulWidget {
   Instructions({Key key}) : super(key: key);
@@ -48,7 +48,7 @@ class InstructionsState extends State<Instructions> {
                       FloatingActionButton(
                           onPressed: prevPage,
                           tooltip: 'Previous Page',
-                          child: IconTheme(data: IconThemeData(color: Color(0xFF51284F)), child: Icon(Icons.arrow_back_ios))
+                          child: IconTheme(data: IconThemeData(color: Color(0xFF51284F)), child: Icon(Icons.navigate_before))
                       )
                     ],
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -60,7 +60,7 @@ class InstructionsState extends State<Instructions> {
                       FloatingActionButton(
                           onPressed: nextPage,
                           tooltip: 'Next Page',
-                          child: IconTheme(data: IconThemeData(color: Color(0xFF51284F)), child: Icon(Icons.arrow_forward_ios))
+                          child: IconTheme(data: IconThemeData(color: Color(0xFF51284F)), child: Icon(Icons.navigate_next))
                       )
                     ],
                     mainAxisAlignment: MainAxisAlignment.center,

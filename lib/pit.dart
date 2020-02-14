@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flushbar/flushbar.dart';
+import 'package:flutter_for_web/material.dart';
 
 import 'useful.dart';
 
@@ -225,41 +224,9 @@ class PitState extends State<Pit> {
                   int millis = DateTime.now().millisecondsSinceEpoch;
                   String complete = '$event|$team|$role|$initials|$drivetrainType|$drivetrainMotorNumber|$drivetrainMotorType|$speed|$weight|$height|$vision|$capacity|$lang|$cellMech|$cellReliability|$cellTime|$panelMech|$panelReliability|$panelTime|$climbMech|$climbReliability|$climbTime|$experience|$notes|$millis|}';
                   int status = await makeRequest(ID, complete);
-                  if (status == 200) {
-                    Flushbar(
-                        title:  'Send successful',
-                        message:  'Information sent to spreadsheet',
-                        duration:  Duration(seconds: 2),
-                        icon: IconTheme(data: IconThemeData(color: Color(0xFF209020)), child: Icon(Icons.check_circle))
-                    ).show(scaffold.currentContext);
-                  } else {
-                    if (status > 0) {
-                      Flushbar(
-                          title:  'Send unsuccessful',
-                          message:  'HTTP error code $status',
-                          duration:  Duration(seconds: 2),
-                          icon: IconTheme(data: IconThemeData(color: Color(0xFF902020)), child: Icon(Icons.error))
-                      ).show(scaffold.currentContext);
-                    }
-                    writeText('pitLogs', 'pitErrorLog.txt', complete, true);
-                  }
-                  writeText('pitLogs', 'pitLog.txt', complete, true);
-                  Flushbar(
-                      title:  'Save successful',
-                      message:  'Match backed up on file system',
-                      duration:  Duration(seconds: 2),
-                      icon: IconTheme(data: IconThemeData(color: Color(0xFF209020)), child: Icon(Icons.check_circle))
-                  ).show(scaffold.currentContext);
                   reset();
                   // This is the response for if the data is not complete.
                   // Leave it unchanged.
-                } else {
-                  Flushbar(
-                      title:  'Submit unsuccessful',
-                      message:  'Please fill out all required fields before submitting',
-                      duration:  Duration(seconds: 2),
-                      icon: IconTheme(data: IconThemeData(color: Color(0xFF902020)), child: Icon(Icons.error))
-                  ).show(scaffold.currentContext);
                 }
               },
             ),
@@ -275,15 +242,6 @@ class PitState extends State<Pit> {
         );
       },
     );
-  }
-  @override
-  void initState() {
-    readText('settingsLogs', 'pid.txt').then((String id) {
-      setState(() {
-        ID = id;
-      });
-    });
-    super.initState();
   }
   @override
   Widget build(BuildContext context) {
@@ -313,9 +271,7 @@ class PitState extends State<Pit> {
                               Flexible(
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                    child: Listener(
-                                            onPointerDown: (_) => FocusScope.of(context).unfocus(),
-                                            child: DropdownButtonHideUnderline(
+                                    child: DropdownButtonHideUnderline(
                                         child: DropdownButton<String>(
                                           value: event,
                                           onChanged: (String newValue) {
@@ -330,7 +286,7 @@ class PitState extends State<Pit> {
                                             );
                                           }).toList(),
                                         )
-                                    ),)
+                                    )
                                   ),
                                   flex: 3,
                                   fit: FlexFit.tight
@@ -550,9 +506,7 @@ class PitState extends State<Pit> {
                               Flexible(
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                    child: Listener(
-                                            onPointerDown: (_) => FocusScope.of(context).unfocus(),
-                                            child: DropdownButtonHideUnderline(
+                                    child: DropdownButtonHideUnderline(
                                         child: DropdownButton<String>(
                                           value: vision,
                                           onChanged: (String newValue) {
@@ -567,7 +521,7 @@ class PitState extends State<Pit> {
                                             );
                                           }).toList(),
                                         )
-                                    ),)
+                                    )
                                   ),
                                   flex: 1,
                                   fit: FlexFit.tight

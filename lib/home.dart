@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_for_web/material.dart';
 
 import 'instructions.dart';
 import 'objective.dart';
 import 'pit.dart';
-import 'send.dart';
-import 'settings.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -21,9 +19,7 @@ class HomeState extends State<Home> {
   final List<Widget> children = [
     Instructions(),
     Objective(),
-    Pit(),
-    Send(),
-    Settings()
+    Pit()
   ];
   void onTabTapped(int index) {
     setState(() {
@@ -72,26 +68,6 @@ class HomeState extends State<Home> {
                       style: TextStyle(color: Color(0xFF97D700)),
                     )
                 ),
-                BottomNavigationBarItem(
-                    icon: IconTheme(
-                      data: IconThemeData(color: Color(0xFF97D700)),
-                      child: Icon(Icons.send),
-                    ),
-                    title: Text(
-                      'Send',
-                      style: TextStyle(color: Color(0xFF97D700)),
-                    )
-                ),
-                BottomNavigationBarItem(
-                    icon: IconTheme(
-                      data: IconThemeData(color: Color(0xFF97D700)),
-                      child: Icon(Icons.settings),
-                    ),
-                    title: Text(
-                      'Settings',
-                      style: TextStyle(color: Color(0xFF97D700)),
-                    )
-                )
               ],
             ),
           )

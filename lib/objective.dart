@@ -18,8 +18,7 @@
 // Leave them unchanged.
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-import 'package:flushbar/flushbar.dart';
+import 'package:flutter_for_web/material.dart';
 
 import 'useful.dart';
 
@@ -229,34 +228,9 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                   int millis = DateTime.now().millisecondsSinceEpoch;
                   String complete = '$event|$team|$match|$initials|$autoCross|$autoPreload|$autoLow|$autoOuter|$autoInner|$rotationControl|$positionControl|$cellLow|$cellOuter|$cellInner|$cellDroppedLow|$cellDroppedHigh|$endgameClimb|$endgameLevel|$notes|$millis|}';
                   int status = await makeRequest(ID, complete);
-                  if (status == 200) {
-                    Flushbar(
-                        title:  'Send successful',
-                        message:  'Match sent to spreadsheet',
-                        duration:  Duration(seconds: 2),
-                        icon: IconTheme(data: IconThemeData(color: Color(0xFF209020)), child: Icon(Icons.check_circle))
-                    ).show(scaffold.currentContext);
-                  } else {
-                    writeText('objectiveLogs', 'objectiveErrorLog.txt', complete, true);
-                    Flushbar(
-                        title:  'Save successful',
-                        message:  'Match backed up on file system',
-                        duration:  Duration(seconds: 2),
-                        icon: IconTheme(data: IconThemeData(color: Color(0xFF209020)), child: Icon(Icons.check_circle))
-                    ).show(scaffold.currentContext);
-                  }
-                  writeText('objectiveLogs', 'objectiveLog.txt', complete, true);
-
                   reset();
                   // This is the response for if the data is not complete.
                   // Leave it unchanged.
-                } else {
-                  Flushbar(
-                    title:  'Submit unsuccessful',
-                    message:  'Please fill out all required fields before submitting',
-                    duration:  Duration(seconds: 2),
-                    icon: IconTheme(data: IconThemeData(color: Color(0xFF902020)), child: Icon(Icons.error))
-                  ).show(scaffold.currentContext);
                 }
               },
             ),
@@ -272,22 +246,6 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
         );
       },
     );
-  }
-  // The following sets the above robot-to-scout and objective ID values.
-  // Leave it unchanged.
-  @override
-  void initState() {
-    readText('settingsLogs', 'robot.txt').then((String txt) {
-      setState(() {
-        text = txt;
-      });
-    });
-    readText('settingsLogs', 'oid.txt').then((String id) {
-      setState(() {
-        ID = id;
-      });
-    });
-    super.initState();
   }
   // I'm not going to comment on every code sample here, as it is expansive and quite
   // flexible (no pun intended) However, for layout purposes, I will outline the
@@ -334,9 +292,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                     Flexible(
                                         child: Padding(
                                           padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                          child: Listener(
-                                            onPointerDown: (_) => FocusScope.of(context).unfocus(),
-                                            child: DropdownButtonHideUnderline(
+                                          child: DropdownButtonHideUnderline(
                                               child: DropdownButton<String>(
                                                 value: event,
                                                 onChanged: (String newValue) {
@@ -351,7 +307,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                                   );
                                                 }).toList(),
                                               )
-                                          ),)
+                                          )
                                         ),
                                         flex: 3,
                                         fit: FlexFit.tight
@@ -437,9 +393,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                   Flexible(
                                       child: Padding(
                                         padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                        child: Listener(
-                                            onPointerDown: (_) => FocusScope.of(context).unfocus(),
-                                            child: DropdownButtonHideUnderline(
+                                        child: DropdownButtonHideUnderline(
                                             child: DropdownButton<String>(
                                               value: autoCross,
                                               onChanged: (String newValue) {
@@ -454,7 +408,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                                 );
                                               }).toList(),
                                             )
-                                        ),)
+                                        )
                                       ),
                                       flex: 1,
                                       fit: FlexFit.tight
@@ -560,9 +514,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                     Flexible(
                                         child: Padding(
                                           padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                          child: Listener(
-                                            onPointerDown: (_) => FocusScope.of(context).unfocus(),
-                                            child: DropdownButtonHideUnderline(
+                                          child: DropdownButtonHideUnderline(
                                               child: DropdownButton<String>(
                                                 value: rotationControl,
                                                 onChanged: (String newValue) {
@@ -577,7 +529,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                                   );
                                                 }).toList(),
                                               )
-                                          ),)
+                                          )
                                         ),
                                         flex: 1,
                                         fit: FlexFit.tight
@@ -585,9 +537,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                     Flexible(
                                         child: Padding(
                                           padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                          child: Listener(
-                                            onPointerDown: (_) => FocusScope.of(context).unfocus(),
-                                            child: DropdownButtonHideUnderline(
+                                          child: DropdownButtonHideUnderline(
                                               child: DropdownButton<String>(
                                                 value: positionControl,
                                                 onChanged: (String newValue) {
@@ -602,7 +552,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                                   );
                                                 }).toList(),
                                               )
-                                          ),)
+                                          )
                                         ),
                                         flex: 1,
                                         fit: FlexFit.tight
@@ -819,9 +769,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                     Flexible(
                                         child: Padding(
                                           padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                          child: Listener(
-                                            onPointerDown: (_) => FocusScope.of(context).unfocus(),
-                                            child: DropdownButtonHideUnderline(
+                                          child: DropdownButtonHideUnderline(
                                               child: DropdownButton<String>(
                                                 value: endgameClimb,
                                                 onChanged: (String newValue) {
@@ -836,7 +784,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                                   );
                                                 }).toList(),
                                               )
-                                          ),)
+                                          )
                                         ),
                                         flex: 3,
                                         fit: FlexFit.tight
@@ -844,9 +792,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                     Flexible(
                                         child: Padding(
                                           padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                          child: Listener(
-                                            onPointerDown: (_) => FocusScope.of(context).unfocus(),
-                                            child: DropdownButtonHideUnderline(
+                                          child: DropdownButtonHideUnderline(
                                               child: DropdownButton<String>(
                                                 value: endgameLevel,
                                                 onChanged: (String newValue) {
@@ -861,7 +807,7 @@ class ObjectiveState extends State<Objective> { // This is the state of the widg
                                                   );
                                                 }).toList(),
                                               )
-                                          ),)
+                                          )
                                         ),
                                         flex: 3,
                                         fit: FlexFit.tight

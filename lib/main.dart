@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter_for_web/material.dart';
+import 'package:flutter_for_web/rendering.dart';
 
 import 'home.dart';
-import 'useful.dart';
-
 void main() {
   // debugPaintSizeEnabled = true;
   runApp(ScoutApp());
@@ -28,14 +26,14 @@ class ScoutAppState extends State<ScoutApp> {
           primaryColor: Color(0xFF51284F),
           accentColor: Color(0xFF97D700),
           backgroundColor: Colors.transparent,
-          fontFamily: 'Noto Sans'
+          fontFamily: 'Raleway'
       ),
       home: Stack(
           children: <Widget>[
             Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/1257background.png'),
+                    image: NetworkImage('https://raw.githubusercontent.com/FRC1257/infinite-recharge-scouting/master/assets/1257background.png'),
                     fit: BoxFit.cover
                 ),
               ),
