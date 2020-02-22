@@ -4,4 +4,4 @@ This is Parallel Universe's 2020 scouting web app and is intended as a guide on 
 
 Instructions to Use
 ------
-It's all in the instructions page. We're up and you can visit [here](1257infiniterechargescouting.surge.sh) now!
+It's all in the instructions page. We're up and you can visit [here](https://1257infiniterechargescouting.surge.sh) now!
