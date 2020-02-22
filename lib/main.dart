@@ -28,7 +28,7 @@ class ScoutAppState extends State<ScoutApp> {
           primaryColor: Color(0xFF51284F),
           accentColor: Color(0xFF97D700),
           backgroundColor: Colors.transparent,
-          fontFamily: 'Noto Sans'
+          fontFamily: 'Raleway'
       ),
       home: Stack(
           children: <Widget>[
