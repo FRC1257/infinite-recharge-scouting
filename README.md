@@ -1,4 +1,4 @@
-# Deep Space Flutter Rebuild
+# Infinite Recharge Scouting App
 
 This is Parallel Universe's 2020 scouting app and is intended as a guide on which future scouting apps should be built; it is being done here in Flutter for iOS and Android compatibility in order to create a fully exportable and versatile scouting system for other teams.
 
@@ -19,7 +19,7 @@ Distribution
 ------
 
   * The APK file at `build/app/outputs/apk/release/app-release.apk` can be shared anywhere, through Drive or e-mail.
-  * For iOS, compress the generated app into an IPA file. Using a service such as [Diawi](https://diawi.com), it may be possible to distribute said scouting app without necessarily connecting every device to a Mac.
+  * For iOS, compress the generated app into an IPA file. Using a service such as [Diawi](https://diawi.com), it may be possible to distribute said scouting app without necessarily connecting every device to a Mac. This depends on a number of factors, such as the size of the app, how many times it is to be downloaded, etc. If there is a better way to install iOS apps, please let me know!
 
 Setup and Use
 ------
