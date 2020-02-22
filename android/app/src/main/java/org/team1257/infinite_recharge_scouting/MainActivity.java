@@ -7,13 +7,24 @@ import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.os.Bundle;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.Response.ErrorListener;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.android.volley.RequestQueue;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.HashMap;
 import java.util.UUID;
+import java.net.URLEncoder;
 
 import io.flutter.app.FlutterActivity;
 import io.flutter.plugins.GeneratedPluginRegistrant;
@@ -52,7 +63,7 @@ public class MainActivity extends FlutterActivity {
                         }
                         if (call.method.equals("sendData")) {
                             pairDevices(call.argument("name"));
-                            sendMessage(call.argument("data"));
+                            splitMessage(call.argument("data"));
                         }
                     }
                 }
@@ -231,8 +242,40 @@ public class MainActivity extends FlutterActivity {
         }
         return paired;
     }
+    public void splitMessage(String s) {
+        ArrayList<String> matches = new ArrayList(Arrays.asList(s.split("\\}")));
+        while (matches.size() > 0) {
+            String finalString = "";
+            while ((finalString.length() < 250) && (matches.size() > 0)) {
+                finalString += matches.get(0) + "}";
+                matches.remove(0);
+            }
+            /*
+            try {
+                debugGetHTML(finalString);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            sendMessage(finalString);
+            */
+        }
+    }
     public void sendMessage(String s) {
         byte[] bytes = s.getBytes();
         cdt.write(bytes);
+    }
+    public void debugGetHTML(final String msgs) throws Exception {
+        String url = "https://docs.google.com/forms/d/e/1FAIpQLSf9-T16exoXG0fMj2Sh7AmvTo3CaVRdH40iNYuRfOij8NRa5A/formResponse?usp=pp_url&entry.591757215=" + msgs + "&submit=Submit";
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+            }
+        }, new ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+        queue.add(stringRequest);
     }
 }

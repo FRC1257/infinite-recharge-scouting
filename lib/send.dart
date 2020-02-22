@@ -43,7 +43,8 @@ class SendState extends State<Send> {
   }
   Future<dynamic> handleAccept(MethodCall call) async {
     if (call.method == 'accept') {
-      dataController.text = call.arguments;
+      dataController.text += '\n\n' + call.arguments;
+      data = dataController.text;
       return new Future.value(data);
     }
   }
@@ -70,11 +71,11 @@ class SendState extends State<Send> {
     lastData = dataType;
   }
   void upload() async {
-    List<String> matches = data.split("\\}");
+    List<String> matches = data.split('}');
     while (matches.length > 0) {
       String finalString = "";
       while ((finalString.length < 1000) && (matches.length > 0)) {
-        finalString += matches[0] + "}";
+        finalString += matches[0] + '}';
         matches.remove(matches[0]);
       }
       int status;
