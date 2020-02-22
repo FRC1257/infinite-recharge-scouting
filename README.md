@@ -1,16 +1,7 @@
-# infinite_recharge_scouting
+# Infinite Recharge Scouting Web App
 
-Team 1257 Scouting App: 2020
+This is Parallel Universe's 2020 scouting web app and is intended as a guide on which future scouting apps should be built.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Instructions to Use
+------
+It's all in the instructions page. We're up and you can visit [here](1257infiniterechargescouting.surge.sh) now!
