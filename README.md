@@ -2,6 +2,11 @@
 
 This is Parallel Universe's 2020 scouting app and is intended as a guide on which future scouting apps should be built; it is being done here in Flutter for iOS and Android compatibility in order to create a fully exportable and versatile scouting system for other teams.
 
+Web Application Access
+------
+
+This app was designed strictly for Android and iOS use. However, due to Flutter's web capabilities and the team's necessity for prescouting, it was deployed as a web application [here](https://1257infiniterechargescouting.surge.sh).
+
 Instructions to Compile
 ------
 
